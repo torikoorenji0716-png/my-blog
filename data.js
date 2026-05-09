@@ -74,7 +74,7 @@ const ARTICLES = [
     category: 'AI活用',
     title: 'SunoAIで作ったBGMをYouTubeに上げてみた結果報告',
     date: '2026年5月5日',
-    url: '#',
+    url: 'suno-youtube-report.html',
   },
 
 ];
