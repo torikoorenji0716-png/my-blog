@@ -329,15 +329,67 @@
     }
 
     .profile-avatar {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, var(--purple), #a89de8);
+      width: 88px;
+      height: 88px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
+      overflow: hidden;
       margin-bottom: 14px;
+      border: 3px solid var(--purple-light);
+      flex-shrink: 0;
+    }
+
+    .profile-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Profile section in main */
+    .profile-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .profile-section-inner {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .profile-section .profile-avatar {
+      width: 100px;
+      height: 100px;
+    }
+
+    .profile-section-body h3 {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .profile-section-body .profile-label {
+      font-size: 0.78rem;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .profile-section-body p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 10px;
+    }
+
+    .profile-section-body p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 560px) {
+      .profile-section-inner { flex-direction: column; align-items: center; text-align: center; }
     }
 
     .profile-name {
@@ -502,6 +554,23 @@
 <div class="container">
   <main>
 
+    <!-- PROFILE -->
+    <div class="profile-section" id="profile">
+      <div class="profile-section-inner">
+        <div class="profile-avatar">
+          <img src="rallyho-icon.png" alt="らりほー">
+        </div>
+        <div class="profile-section-body">
+          <h3>らりほー</h3>
+          <span class="profile-label">🚛 滋賀県在住のトラックドライバー｜57歳｜副業挑戦中</span>
+          <p>57歳を迎え、定年を前に「これからの人生をどう充実させるか」を考えるようになりました。副業にも興味はありましたが、「自分に何ができるのか」がわからず、なかなか一歩を踏み出せずに悶々とした日々を過ごしていました。</p>
+          <p>そんな時、Suno AIの使い方を知る機会があり、新しい可能性を感じました。AIを活用して音楽を作り、それを発信していくことに大きな魅力を感じたのです。ただ、一般公開には課金が必要で「最初からお金をかけること」に抵抗がありました。しかし、その考え方こそが自分の可能性を狭めていたのだと気づきました。</p>
+          <p>成功する人は、まず行動し、必要な投資を惜しまない——そのことを学び、少しずつ自分のマインドを変えていくようになりました。</p>
+          <p>今は、年齢にとらわれず新しいことに挑戦しながら、自分らしい副業の形を模索しています。このブログでは、Suno AIの活用方法や副業への挑戦、50代からの新しい生き方について発信していきます。</p>
+        </div>
+      </div>
+    </div>
+
     <!-- CATEGORIES -->
     <h2 class="section-title">📂 カテゴリ</h2>
     <div class="category-grid">
@@ -563,9 +632,11 @@
 
     <div class="sidebar-card">
       <h4>👤 プロフィール</h4>
-      <div class="profile-avatar">🚛</div>
+      <div class="profile-avatar">
+        <img src="rallyho-icon.png" alt="らりほー">
+      </div>
       <div class="profile-name">らりほー</div>
-      <p class="profile-bio">滋賀在住のトラックドライバー。副業でせどり・ハンドメイド・AI活用に挑戦中。リベ大コミュニティ所属。</p>
+      <p class="profile-bio">57歳・滋賀在住のトラックドライバー。定年を前に副業に挑戦。Suno AI・せどり・ハンドメイドでコツコツ実験中。リベ大コミュニティ所属。</p>
     </div>
 
     <div class="sidebar-card">
