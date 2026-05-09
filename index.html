@@ -53,12 +53,7 @@
       height: 64px;
     }
 
-    .logo {
-      font-size: 1.2rem;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
+    .logo { font-size: 1.2rem; font-weight: 900; white-space: nowrap; }
     .logo span { color: var(--purple); }
 
     nav { display: flex; gap: 4px; }
@@ -73,10 +68,7 @@
       white-space: nowrap;
     }
 
-    nav a:hover {
-      background: var(--purple-light);
-      color: var(--purple);
-    }
+    nav a:hover { background: var(--purple-light); color: var(--purple); }
 
     /* ===== HAMBURGER ===== */
     .hamburger {
@@ -121,10 +113,7 @@
       background: linear-gradient(135deg, rgba(80,72,180,0.82) 0%, rgba(50,44,130,0.75) 100%);
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
     .hero-badge {
       display: inline-block;
@@ -199,6 +188,85 @@
       background: var(--border);
     }
 
+    /* ===== PROFILE SECTION ===== */
+    .profile-section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .profile-section-inner {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--purple-light);
+      flex-shrink: 0;
+    }
+
+    .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .profile-section-body { flex: 1; }
+
+    .profile-section-body h3 {
+      font-size: 1.2rem;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .profile-label {
+      font-size: 0.78rem;
+      color: var(--purple);
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .profile-preview p,
+    .profile-full p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin-bottom: 10px;
+    }
+
+    /* ── 続きを読む アコーディオン ── */
+    .profile-full {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+    }
+
+    .profile-full.open { max-height: 1200px; }
+
+    .profile-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      background: var(--purple-light);
+      color: var(--purple);
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .profile-toggle:hover { background: var(--purple); color: var(--white); }
+
     /* ===== CATEGORY CARDS ===== */
     .category-grid {
       display: grid;
@@ -223,30 +291,12 @@
       border-color: var(--purple);
     }
 
-    .category-card .icon {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .category-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: var(--purple);
-    }
-
-    .category-card p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .category-card .icon { font-size: 2rem; margin-bottom: 10px; }
+    .category-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--purple); }
+    .category-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
 
     /* ===== ARTICLE CARDS ===== */
-    .article-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+    .article-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 
     .article-card {
       background: var(--white);
@@ -292,24 +342,11 @@
       margin-bottom: 8px;
     }
 
-    .article-card h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .article-date {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
+    .article-card h3 { font-size: 0.95rem; font-weight: 700; line-height: 1.5; margin-bottom: 8px; }
+    .article-date { font-size: 0.75rem; color: var(--text-muted); }
 
     /* ===== SIDEBAR ===== */
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
 
     .sidebar-card {
       background: var(--white);
@@ -328,88 +365,22 @@
       border-bottom: 2px solid var(--purple-light);
     }
 
-    .profile-avatar {
-      width: 88px;
-      height: 88px;
+    .sidebar-avatar {
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
       overflow: hidden;
-      margin-bottom: 14px;
       border: 3px solid var(--purple-light);
-      flex-shrink: 0;
+      margin-bottom: 12px;
     }
 
-    .profile-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* Profile section in main */
-    .profile-section {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      margin-bottom: 48px;
-    }
+    .profile-name { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
 
-    .profile-section-inner {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-    }
+    .profile-bio { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
 
-    .profile-section .profile-avatar {
-      width: 100px;
-      height: 100px;
-    }
-
-    .profile-section-body h3 {
-      font-size: 1.2rem;
-      font-weight: 900;
-      margin-bottom: 4px;
-    }
-
-    .profile-section-body .profile-label {
-      font-size: 0.78rem;
-      color: var(--purple);
-      font-weight: 700;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .profile-section-body p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-      margin-bottom: 10px;
-    }
-
-    .profile-section-body p:last-child { margin-bottom: 0; }
-
-    @media (max-width: 560px) {
-      .profile-section-inner { flex-direction: column; align-items: center; text-align: center; }
-    }
-
-    .profile-name {
-      font-weight: 700;
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .profile-bio {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .cat-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .cat-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 
     .cat-list li a {
       display: flex;
@@ -433,11 +404,7 @@
       border-radius: 10px;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .tag {
       background: var(--purple-light);
@@ -450,10 +417,7 @@
       cursor: pointer;
     }
 
-    .tag:hover {
-      background: var(--purple);
-      color: var(--white);
-    }
+    .tag:hover { background: var(--purple); color: var(--white); }
 
     /* ===== FOOTER ===== */
     footer {
@@ -465,13 +429,7 @@
       margin-top: 40px;
     }
 
-    .footer-logo {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-
+    .footer-logo { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .footer-logo span { color: var(--purple); }
 
     /* ===== RESPONSIVE ===== */
@@ -492,30 +450,20 @@
       }
 
       nav.open { display: flex; }
+      nav a { padding: 10px 14px; border-radius: 8px; }
 
-      nav a {
-        padding: 10px 14px;
-        border-radius: 8px;
-      }
-
-      .container {
-        grid-template-columns: 1fr;
-        padding: 28px 16px;
-        gap: 28px;
-      }
-
+      .container { grid-template-columns: 1fr; padding: 28px 16px; gap: 28px; }
       .hero { padding: 56px 20px; }
+    }
+
+    @media (max-width: 560px) {
+      .profile-section-inner { flex-direction: column; align-items: center; text-align: center; }
     }
 
     @media (max-width: 480px) {
       .category-grid { grid-template-columns: 1fr; }
-
       .article-card { flex-direction: column; }
-
-      .article-thumb {
-        width: 100%;
-        height: 72px;
-      }
+      .article-thumb { width: 100%; height: 72px; }
     }
   </style>
 </head>
@@ -533,7 +481,7 @@
       <a href="#">せどり</a>
       <a href="#">ハンドメイド</a>
       <a href="#">AI副業</a>
-      <a href="#">プロフィール</a>
+      <a href="#profile">プロフィール</a>
     </nav>
   </div>
 </header>
@@ -554,19 +502,20 @@
 <div class="container">
   <main>
 
-    <!-- PROFILE -->
+    <!-- PROFILE（data.jsから自動で表示） -->
     <div class="profile-section" id="profile">
       <div class="profile-section-inner">
         <div class="profile-avatar">
-          <img src="rallyho-icon.png" alt="らりほー">
+          <img id="profile-icon" src="" alt="">
         </div>
         <div class="profile-section-body">
-          <h3>らりほー</h3>
-          <span class="profile-label">🚛 滋賀県在住のトラックドライバー｜57歳｜副業挑戦中</span>
-          <p>57歳を迎え、定年を前に「これからの人生をどう充実させるか」を考えるようになりました。副業にも興味はありましたが、「自分に何ができるのか」がわからず、なかなか一歩を踏み出せずに悶々とした日々を過ごしていました。</p>
-          <p>そんな時、Suno AIの使い方を知る機会があり、新しい可能性を感じました。AIを活用して音楽を作り、それを発信していくことに大きな魅力を感じたのです。ただ、一般公開には課金が必要で「最初からお金をかけること」に抵抗がありました。しかし、その考え方こそが自分の可能性を狭めていたのだと気づきました。</p>
-          <p>成功する人は、まず行動し、必要な投資を惜しまない——そのことを学び、少しずつ自分のマインドを変えていくようになりました。</p>
-          <p>今は、年齢にとらわれず新しいことに挑戦しながら、自分らしい副業の形を模索しています。このブログでは、Suno AIの活用方法や副業への挑戦、50代からの新しい生き方について発信していきます。</p>
+          <h3 id="profile-name"></h3>
+          <span class="profile-label" id="profile-label"></span>
+          <div class="profile-preview">
+            <p id="profile-preview-text"></p>
+          </div>
+          <div class="profile-full" id="profile-full"></div>
+          <button class="profile-toggle" id="profile-toggle">続きを読む ▼</button>
         </div>
       </div>
     </div>
@@ -596,34 +545,9 @@
       </div>
     </div>
 
-    <!-- ARTICLES -->
+    <!-- ARTICLES（data.jsから自動で表示） -->
     <h2 class="section-title" id="articles">📝 最新記事</h2>
-    <div class="article-grid">
-      <div class="article-card">
-        <div class="article-thumb">📦</div>
-        <div class="article-meta">
-          <span class="article-category">せどり実践記</span>
-          <h3>【せどり初月】仕入れ5,000円で利益はいくらだったか公開します</h3>
-          <div class="article-date">2026年5月10日</div>
-        </div>
-      </div>
-      <div class="article-card">
-        <div class="article-thumb">🔑</div>
-        <div class="article-meta">
-          <span class="article-category">ハンドメイド</span>
-          <h3>NFCキーホルダーをフリマで初出品！売れるまでの話</h3>
-          <div class="article-date">2026年5月8日</div>
-        </div>
-      </div>
-      <div class="article-card">
-        <div class="article-thumb">🎵</div>
-        <div class="article-meta">
-          <span class="article-category">AI活用</span>
-          <h3>SunoAIで作ったBGMをYouTubeに上げてみた結果報告</h3>
-          <div class="article-date">2026年5月5日</div>
-        </div>
-      </div>
-    </div>
+    <div class="article-grid" id="articles-grid"></div>
 
   </main>
 
@@ -632,11 +556,11 @@
 
     <div class="sidebar-card">
       <h4>👤 プロフィール</h4>
-      <div class="profile-avatar">
-        <img src="rallyho-icon.png" alt="らりほー">
+      <div class="sidebar-avatar">
+        <img id="sidebar-icon" src="" alt="">
       </div>
-      <div class="profile-name">らりほー</div>
-      <p class="profile-bio">57歳・滋賀在住のトラックドライバー。定年を前に副業に挑戦。Suno AI・せどり・ハンドメイドでコツコツ実験中。リベ大コミュニティ所属。</p>
+      <div class="profile-name" id="sidebar-name"></div>
+      <p class="profile-bio" id="sidebar-bio"></p>
     </div>
 
     <div class="sidebar-card">
@@ -672,11 +596,58 @@
   <p>© 2026 らりほーの副業実験室</p>
 </footer>
 
+<!-- コンテンツデータ（data.jsで管理） -->
+<script src="data.js"></script>
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
-  hamburger.addEventListener('click', () => {
-    nav.classList.toggle('open');
+  // ── ハンバーガーメニュー ──
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+
+  // ── プロフィール描画 ──
+  document.getElementById('profile-icon').src = PROFILE.icon;
+  document.getElementById('profile-icon').alt = PROFILE.name;
+  document.getElementById('profile-name').textContent = PROFILE.name;
+  document.getElementById('profile-label').textContent = PROFILE.label;
+  document.getElementById('profile-preview-text').textContent = PROFILE.preview;
+
+  const fullDiv = document.getElementById('profile-full');
+  PROFILE.full.forEach(text => {
+    const p = document.createElement('p');
+    p.textContent = text;
+    fullDiv.appendChild(p);
+  });
+
+  // ── 続きを読む トグル ──
+  const toggle = document.getElementById('profile-toggle');
+  toggle.addEventListener('click', () => {
+    const isOpen = fullDiv.classList.toggle('open');
+    toggle.textContent = isOpen ? '閉じる ▲' : '続きを読む ▼';
+  });
+
+  // ── サイドバープロフィール描画 ──
+  document.getElementById('sidebar-icon').src = PROFILE.icon;
+  document.getElementById('sidebar-icon').alt = PROFILE.name;
+  document.getElementById('sidebar-name').textContent = PROFILE.name;
+  document.getElementById('sidebar-bio').textContent = PROFILE.short;
+
+  // ── 記事一覧描画 ──
+  const grid = document.getElementById('articles-grid');
+  ARTICLES.forEach(article => {
+    const card = document.createElement('div');
+    card.className = 'article-card';
+    card.innerHTML = `
+      <div class="article-thumb">${article.emoji}</div>
+      <div class="article-meta">
+        <span class="article-category">${article.category}</span>
+        <h3>${article.title}</h3>
+        <div class="article-date">${article.date}</div>
+      </div>
+    `;
+    if (article.url && article.url !== '#') {
+      card.addEventListener('click', () => { window.location.href = article.url; });
+    }
+    grid.appendChild(card);
   });
 </script>
 
