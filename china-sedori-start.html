@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NFCタグ付きオリジナルキーホルダー | らりほーの副業実験室</title>
-  <meta name="description" content="オフ会をきっかけに生まれたNFCタグ付きキーホルダー。フリマで販売を始めた話をリアルに公開します。">
+  <title>中国せどり実践記 スタート宣言 | らりほーの副業実験室</title>
+  <meta name="description" content="YouTube BGMが伸びない中、次の収入の柱として「中国せどり」を1万円からスタート。不用品販売との違いや、AIを活用したせどりのリアルを公開します。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -57,7 +57,6 @@
     .logo span { color: var(--purple); }
 
     nav { display: flex; gap: 4px; }
-
     nav a {
       padding: 6px 14px;
       border-radius: 20px;
@@ -67,7 +66,6 @@
       transition: background 0.2s, color 0.2s;
       white-space: nowrap;
     }
-
     nav a:hover { background: var(--purple-light); color: var(--purple); }
 
     .hamburger {
@@ -86,27 +84,6 @@
       background: var(--text);
       border-radius: 2px;
     }
-
-    /* ===== パンくず ===== */
-    .breadcrumb {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 0;
-    }
-    .breadcrumb-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-    }
-    .breadcrumb-inner a { color: var(--purple); }
-    .breadcrumb-inner a:hover { text-decoration: underline; }
-    .breadcrumb-sep { color: var(--border); }
 
     /* ===== MAIN LAYOUT ===== */
     .container {
@@ -130,8 +107,8 @@
 
     .article-cat {
       display: inline-block;
-      background: var(--purple-light);
-      color: var(--purple);
+      background: rgba(196,149,106,.18);
+      color: #8B5E2A;
       padding: 3px 12px;
       border-radius: 12px;
       font-size: 0.75rem;
@@ -168,15 +145,15 @@
       font-weight: 900;
       margin: 2.2em 0 0.9em;
       padding: 10px 16px;
-      background: var(--purple-light);
-      border-left: 4px solid var(--purple);
+      background: rgba(196,149,106,.1);
+      border-left: 4px solid #C4956A;
       border-radius: 0 var(--radius) var(--radius) 0;
-      color: var(--purple-dark);
+      color: #6B4423;
     }
 
     .article-body blockquote {
-      background: #f9f9f9;
-      border-left: 4px solid var(--purple);
+      background: #fdf8f3;
+      border-left: 4px solid #C4956A;
       padding: 14px 20px;
       margin: 1.4em 0;
       border-radius: 0 var(--radius) var(--radius) 0;
@@ -186,67 +163,56 @@
       line-height: 1.9;
     }
 
-    /* 記事内写真 */
-    .article-photo {
-      margin: 2em 0;
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+    .article-body ul {
+      list-style: none;
+      margin: 1em 0 1.6em;
+      padding: 0;
     }
 
-    .article-photo img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .article-body ul li {
+      padding: 0.4em 0 0.4em 1.4em;
+      position: relative;
+      font-size: 0.95rem;
     }
 
-    .article-photo figcaption {
-      padding: 10px 16px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-align: center;
-      background: #fafafa;
-      border-top: 1px solid var(--border);
+    .article-body ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #C4956A;
     }
 
-    /* NFCボックス */
-    .nfc-box {
-      background: linear-gradient(135deg, var(--purple-light), #f0fff0);
-      border: 1px solid var(--purple);
+    .article-body a {
+      color: var(--purple);
+      text-decoration: underline;
+    }
+
+    .article-body strong {
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    /* ハイライトボックス */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(196,149,106,.1), rgba(107,143,107,.06));
+      border: 1px solid #C4956A;
       border-radius: var(--radius);
       padding: 20px 24px;
       margin: 1.6em 0;
     }
 
-    .nfc-box .box-title {
+    .highlight-box .box-title {
       font-weight: 900;
       font-size: 0.95rem;
-      color: var(--purple-dark);
+      color: #6B4423;
       margin-bottom: 12px;
     }
 
-    .nfc-box ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+    .highlight-box ul {
+      margin: 0;
     }
 
-    .nfc-box ul li {
-      font-size: 0.9rem;
-      padding-left: 1.4em;
-      position: relative;
-      color: var(--text);
-    }
-
-    .nfc-box ul li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
-      color: var(--purple);
-      font-size: 0.8rem;
-    }
+    .highlight-box ul li::before { color: #C4956A; }
 
     /* タグ */
     .article-tags {
@@ -321,7 +287,6 @@
     .profile-bio { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
 
     .cat-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-
     .cat-list li a {
       display: flex;
       align-items: center;
@@ -332,9 +297,7 @@
       color: var(--text-muted);
       transition: color 0.2s;
     }
-
     .cat-list li a:hover { color: var(--purple); }
-
     .cat-list .count {
       background: var(--purple-light);
       color: var(--purple);
@@ -369,7 +332,6 @@
     }
 
     .latest-info { flex: 1; }
-
     .latest-cat {
       display: inline-block;
       background: var(--purple-light);
@@ -380,14 +342,12 @@
       font-weight: 700;
       margin-bottom: 4px;
     }
-
     .latest-title {
       font-size: 0.82rem;
       font-weight: 700;
       line-height: 1.5;
       color: var(--text);
     }
-
     .latest-date { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
 
     /* ===== FOOTER ===== */
@@ -398,7 +358,6 @@
       padding: 32px 20px;
       font-size: 0.82rem;
     }
-
     .footer-logo { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .footer-logo span { color: var(--purple); }
 
@@ -444,10 +403,10 @@
 </header>
 
 <!-- トップバー -->
-<div style="background:var(--purple);padding:0;">
+<div style="background:#7F77DD;padding:0;">
   <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:44px;">
     <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.9);font-size:0.85rem;font-weight:700;">← トップに戻る</a>
-    <span style="font-size:0.78rem;color:rgba(255,255,255,0.7);">🔑 ハンドメイド販売</span>
+    <span style="font-size:0.78rem;color:rgba(255,255,255,0.7);">📦 せどり実践記</span>
   </div>
 </div>
 
@@ -456,97 +415,109 @@
   <main>
     <article class="article-wrap">
 
-      <span class="article-cat">🔑 ハンドメイド販売</span>
-      <h1 class="article-title">NFCタグ付きオリジナルキーホルダー<br>— オフ会をきっかけに販売を始めた話</h1>
+      <span class="article-cat">📦 せどり実践記</span>
+      <h1 class="article-title">中国せどり実践記<br>— まずは1万円からスタートします</h1>
       <div class="article-date">🗓 2026年5月10日　by らりほー</div>
 
       <div class="article-body">
 
-        <p>最近、オフ会に参加する機会が増えてきました。</p>
+        <p>最近、YouTubeでBGMチャンネルを運営していますが、なかなか思うように伸びず、次の収入の柱を考えるようになりました。</p>
 
-        <p>その中でふと気づいたことがあります。<br>
-        それは、<strong>「自分の持ち物がどれかわかりにくい」</strong>ということです。</p>
+        <p>そこで改めて注目したのが<strong>「せどり」</strong>です。</p>
 
-        <p>特にイベントや交流会では、机の端に荷物を置いたり、似たような持ち物が並んだりすることがよくあります。そんな時に、「自分の印」があればすぐにわかるのでは？と思ったのが、このキーホルダーを作るきっかけでした。</p>
+        <p>これまでにも、<a href="https://fril.jp/" target="_blank">ラクマ</a>で不用品を販売した経験があり、フリーマーケットで物を売ること自体には慣れていました。</p>
 
-        <!-- 写真1 -->
-        <figure class="article-photo">
-          <img src="keychain-photo1.jpg" alt="NFCタグ付きオリジナルキーホルダー各デザイン">
-          <figcaption>左から「Rallyho-イラスト」「NFCタグ（単体）」「QRコード入り」「Pロゴ」デザインの各キーホルダー</figcaption>
-        </figure>
+        <h2>不用品販売と仕入れ販売の大きな違い</h2>
 
-        <h2>自分のアイコンをキーホルダーに</h2>
+        <p>不用品販売の場合は、すでに自宅にある物を出品するため、購入価格を気にする必要がありません。</p>
 
-        <p>そこで、自分のSNSアイコンやオリジナルデザインをキーホルダーにして、持ち物につけてみました。</p>
+        <p>そのため、送料込みで販売しても、しっかり利益を出しやすいというメリットがあります。</p>
 
-        <p>すると、それだけで</p>
+        <p>しかし実際に、安く売られている商品を仕入れて、それをフリーマーケットで販売する「せどり」は、まったく別の難しさがありました。</p>
 
-        <blockquote>「これは○○さんの持ち物だ！」</blockquote>
-
-        <p>とすぐにわかるようになり、人との差別化にもつながりました。</p>
-
-        <p>オフ会で実際に参加者の方へ配りながら、「これを付けると、自分の持ち物がすぐわかって便利ですよ」とお話ししていたところ、</p>
-
-        <blockquote>「これ、みんなに販売したらいいのでは？」</blockquote>
-
-        <p>と言っていただいたのが、販売を始めるきっかけになりました。</p>
-
-        <h2>NFCタグとの出会い</h2>
-
-        <p>さらに、その時に教えてもらったのが<strong>「NFCタグ」</strong>という存在です。</p>
-
-        <p>最初は「NFCタグって何？」という状態でしたが、とても便利な仕組みだと知りました。</p>
-
-        <p>キーホルダーの裏に小さなNFCタグを貼るだけで、<strong>スマホをかざすだけで設定したページを開く</strong>ことができます。</p>
-
-        <div class="nfc-box">
-          <p class="box-title">📱 NFCタグでできること（使い方は無限大！）</p>
+        <div class="highlight-box">
+          <p class="box-title">⚠️ せどりで考えなければいけないコスト</p>
           <ul>
-            <li>自分のプロフィールページを開く</li>
-            <li>ブログのURLを開く</li>
-            <li>YouTubeチャンネルへ誘導する</li>
-            <li>InstagramやSNSへアクセスしてもらう</li>
-            <li>PayPay支払いページを開く</li>
-            <li>オフ会の参加費をスムーズに回収する</li>
+            <li>商品の仕入れ価格</li>
+            <li>販売手数料</li>
+            <li>送料</li>
+            <li>梱包資材</li>
+            <li>値下げ交渉</li>
           </ul>
         </div>
 
-        <p>まさに<strong>「使い方は人の数だけある」</strong>、そんな便利なシステムだと感じました。</p>
+        <p>これらをすべて含めて考えると、</p>
 
-        <!-- 写真2 -->
-        <figure class="article-photo">
-          <img src="keychain-photo2.jpg" alt="お会計デザインのキーホルダー">
-          <figcaption>「お会計」デザインはオフ会での参加費回収にも活躍。スマホをかざすだけでPayPay画面が開きます</figcaption>
-        </figure>
+        <blockquote>「思ったより利益が残らない…」</blockquote>
 
-        <h2>フリーマーケットで販売スタート</h2>
+        <p>という現実を何度も経験しました。</p>
 
-        <p>現在は、このNFCタグ付きオリジナルキーホルダーをフリーマーケットで販売しています。</p>
+        <h2>それでも、今はAIが手伝ってくれる</h2>
 
-        <p>まだまだ「NFCタグって何？」という方も多いので、まずは実際に使ってもらい、知ってもらうことを大切にしています。</p>
+        <p>以前よりも今は、AIを活用できる時代です。</p>
 
-        <p>数十人の方にお配りしながら、</p>
+        <div class="highlight-box">
+          <p class="box-title">🤖 AIがサポートしてくれること</p>
+          <ul>
+            <li>売れ筋商品のリサーチ</li>
+            <li>相場の確認</li>
+            <li>利益計算</li>
+            <li>タイトルや説明文の作成</li>
+            <li>出品の効率化</li>
+          </ul>
+        </div>
 
-        <blockquote>「こんなことができるんだ！」<br>「これは便利！」</blockquote>
+        <p>こうした作業をAIがサポートしてくれることで、せどりのハードルはかなり下がってきたと感じています。</p>
 
-        <p>そんな声をいただけるよう、日々活動しています。</p>
+        <p>だからこそ、今月から本格的に<strong>「中国せどり」</strong>を始めることにしました。</p>
 
-        <p>これからもっと多くの方に、この便利さと楽しさを知ってもらえたら嬉しいです。</p>
+        <h2>まずは1万円からスタート</h2>
 
-        <p>ハンドメイド販売から生まれた、小さなアイデア。<br>
-        それが人とのつながりを作り、新しい価値になっていく。<br>
-        そんな商品づくりを、これからも続けていきたいと思っています。</p>
+        <p>いきなり大きく仕入れるのではなく、まずは<strong>1万円から小さくスタート</strong>します。</p>
+
+        <p>大切なのは、</p>
+
+        <blockquote>
+          「何が買いなのか？」<br>
+          「何が利益につながるのか？」
+        </blockquote>
+
+        <p>を実際に試しながら見極めること。</p>
+
+        <p>まずは仕入れてみて、<a href="https://jp.mercari.com/" target="_blank">メルカリ</a>や<a href="https://fril.jp/" target="_blank">ラクマ</a>で販売し、</p>
+
+        <ul>
+          <li>本当に売れるのか</li>
+          <li>利益はしっかり出るのか</li>
+          <li>継続できる仕組みになるのか</li>
+        </ul>
+
+        <p>を確認していこうと思っています。</p>
+
+        <h2>せどりは「経験」が一番の勉強</h2>
+
+        <p>頭で考えるだけではわからないことがたくさんあります。</p>
+
+        <p>だからこそ、まずはやってみる。</p>
+
+        <p>失敗も含めて、それが一番の勉強になると思っています。</p>
+
+        <p>このブログでは、これから実際の仕入れ商品や利益、失敗談も含めて、リアルな「中国せどり実践記」として記録していきます。</p>
+
+        <p>これから始めたい人の参考にもなれば嬉しいです。</p>
+
+        <blockquote>まずは小さな一歩。<br>ここから、せどりの挑戦をスタートしていきます。</blockquote>
 
       </div>
 
       <!-- タグ -->
       <div class="article-tags">
-        <span class="article-tag">#ハンドメイド</span>
-        <span class="article-tag">#NFCタグ</span>
-        <span class="article-tag">#キーホルダー</span>
-        <span class="article-tag">#オフ会</span>
-        <span class="article-tag">#フリーマーケット</span>
+        <span class="article-tag">#せどり</span>
+        <span class="article-tag">#中国せどり</span>
         <span class="article-tag">#副業</span>
+        <span class="article-tag">#メルカリ</span>
+        <span class="article-tag">#ラクマ</span>
+        <span class="article-tag">#AI活用</span>
       </div>
 
       <a href="index.html" class="back-btn">← 記事一覧に戻る</a>
@@ -570,6 +541,17 @@
       <h4>📰 最新記事</h4>
       <div class="latest-list">
 
+        <a href="china-sedori-start.html">
+          <div class="latest-item">
+            <div class="latest-thumb">📦</div>
+            <div class="latest-info">
+              <span class="latest-cat">せどり実践記</span>
+              <div class="latest-title">中国せどり実践記 — まずは1万円からスタートします</div>
+              <div class="latest-date">2026年5月10日</div>
+            </div>
+          </div>
+        </a>
+
         <a href="handmade-nfc-keychain.html">
           <div class="latest-item">
             <div class="latest-thumb">🔑</div>
@@ -592,24 +574,13 @@
           </div>
         </a>
 
-        <a href="index.html">
-          <div class="latest-item">
-            <div class="latest-thumb">📦</div>
-            <div class="latest-info">
-              <span class="latest-cat">せどり実践記</span>
-              <div class="latest-title">【せどり初月】仕入れ5,000円で利益はいくらだったか</div>
-              <div class="latest-date">2026年5月10日</div>
-            </div>
-          </div>
-        </a>
-
       </div>
     </div>
 
     <div class="sidebar-card">
       <h4>📂 カテゴリ一覧</h4>
       <ul class="cat-list">
-        <li><a href="index.html">📦 せどり実践記 <span class="count">1</span></a></li>
+        <li><a href="china-sedori-start.html">📦 せどり実践記 <span class="count">1</span></a></li>
         <li><a href="handmade-nfc-keychain.html">🔑 ハンドメイド販売 <span class="count">1</span></a></li>
         <li><a href="suno-youtube-report.html">🤖 AI副業活用 <span class="count">1</span></a></li>
         <li><a href="index.html">💡 副業入門ガイド <span class="count">0</span></a></li>
