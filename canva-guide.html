@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>副業を広げるCanva活用術 | 副業入門ガイド | らりほーの副業実験室</title>
+  <meta name="description" content="デザイン初心者でも使えるCanva。アイコン制作からキーホルダーデザイン・YouTube動画まで、副業に役立つ使い方をリアルな体験談とともに紹介します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7F77DD;
+      --purple-dark: #6560c0;
+      --purple-light: #ededfb;
+      --bg: #F5F5F0;
+      --white: #ffffff;
+      --text: #2d2d2d;
+      --text-muted: #666;
+      --border: #e2e2e2;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(127,119,221,0.1);
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--white);
+      border-bottom: 3px solid var(--purple);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo { font-size: 1.2rem; font-weight: 900; white-space: nowrap; }
+    .logo span { color: var(--purple); }
+
+    nav { display: flex; gap: 4px; }
+    nav a {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    nav a:hover { background: var(--purple-light); color: var(--purple); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ===== 記事本文 ===== */
+    .article-wrap {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .article-cat {
+      display: inline-block;
+      background: rgba(127,119,221,.15);
+      color: #4B44B0;
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .article-title {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 900;
+      line-height: 1.45;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .article-date {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--purple-light);
+    }
+
+    /* 本文テキスト */
+    .article-body p {
+      font-size: 0.97rem;
+      line-height: 2;
+      margin-bottom: 1.5em;
+      color: var(--text);
+    }
+
+    .article-body h2 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      margin: 2.2em 0 0.9em;
+      padding: 10px 16px;
+      background: rgba(196,149,106,.1);
+      border-left: 4px solid #C4956A;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: #6B4423;
+    }
+
+    .article-body blockquote {
+      background: #fdf8f3;
+      border-left: 4px solid #C4956A;
+      padding: 14px 20px;
+      margin: 1.4em 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .article-body ul {
+      list-style: none;
+      margin: 1em 0 1.6em;
+      padding: 0;
+    }
+
+    .article-body ul li {
+      padding: 0.4em 0 0.4em 1.4em;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .article-body ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #C4956A;
+    }
+
+    .article-body strong { font-weight: 900; color: var(--text); }
+
+    /* ハイライトボックス */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(196,149,106,.1), rgba(107,143,107,.06));
+      border: 1px solid #C4956A;
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 1.6em 0;
+    }
+
+    .highlight-box .box-title {
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: #6B4423;
+      margin-bottom: 12px;
+    }
+
+    .highlight-box ul { margin: 0; }
+    .highlight-box ul li::before { color: #C4956A; }
+
+    /* 写真 */
+    .article-photo {
+      margin: 2em 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .article-photo img { width: 100%; height: auto; display: block; }
+    .article-photo figcaption {
+      background: #fafafa;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    /* タグ */
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 2px solid var(--purple-light);
+    }
+
+    .article-tag {
+      background: var(--purple-light);
+      color: var(--purple);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    /* 戻るボタン */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 28px;
+      background: var(--purple);
+      color: var(--white);
+      padding: 10px 24px;
+      border-radius: 24px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .back-btn:hover { background: var(--purple-dark); transform: translateY(-2px); }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .sidebar-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--purple-light);
+    }
+
+    .sidebar-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--purple-light);
+      margin-bottom: 12px;
+    }
+    .sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .profile-name { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .profile-bio { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+    .cat-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .cat-list li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .cat-list li a:hover { color: var(--purple); }
+    .cat-list .count {
+      background: var(--purple-light);
+      color: var(--purple);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    .latest-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .latest-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .latest-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .latest-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .latest-info { flex: 1; }
+    .latest-cat {
+      display: inline-block;
+      background: var(--purple-light);
+      color: var(--purple);
+      padding: 1px 8px;
+      border-radius: 8px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .latest-title { font-size: 0.82rem; font-weight: 700; line-height: 1.5; color: var(--text); }
+    .latest-date { font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #2d2d2d;
+      color: #aaa;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.82rem;
+    }
+    .footer-logo { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .footer-logo span { color: var(--purple); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 12px 20px 20px;
+        border-bottom: 2px solid var(--border);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      nav.open { display: flex; }
+      nav a { padding: 10px 14px; border-radius: 8px; }
+      .container { grid-template-columns: 1fr; padding: 24px 16px 60px; }
+      .article-wrap { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">らりほーの副業<span>実験室</span></div>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav">
+      <a href="index.html">ホーム</a>
+      <a href="china-sedori-start.html">せどり</a>
+      <a href="handmade-nfc-keychain.html">ハンドメイド</a>
+      <a href="suno-youtube-report.html">AI副業</a>
+      <a href="index.html#profile">プロフィール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- トップバー -->
+<div style="background:#7F77DD;padding:0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:44px;">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.9);font-size:0.85rem;font-weight:700;">← トップに戻る</a>
+    <span style="font-size:0.78rem;color:rgba(255,255,255,0.7);">💡 副業入門ガイド</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+  <main>
+    <article class="article-wrap">
+
+      <span class="article-cat">💡 副業入門ガイド</span>
+      <h1 class="article-title">副業を広げるCanva活用術<br>— デザイン初心者が有料版まで使い続ける理由</h1>
+      <div class="article-date">🗓 2026年5月10日　by らりほー</div>
+
+      <div class="article-body">
+
+        <p>今回は、副業をするうえで私がとても大切にしているツール、<strong>Canva（キャンバ）</strong>についてお話しします。</p>
+
+        <p>Canvaを少しずつ使えるようになったことは、副業を続けていくうえで<strong>とても大きな収穫</strong>でした。</p>
+
+        <h2>Canvaとの出会い</h2>
+
+        <p>もともとCanvaを使い始めたきっかけは、<strong>デザイン作成と自分のアイコン制作</strong>を教えてもらったことです。</p>
+
+        <p>当時は無料版を使っていましたが、使い続けるうちにその便利さを実感し、今では<strong>有料版に課金して</strong>フル活用しています。</p>
+
+        <blockquote>「有料版にするかどうか迷っている…」という方も多いかもしれませんが、副業で複数の用途に使うなら、元は十分に取れると感じています。</blockquote>
+
+        <h2>キーホルダーのデザインにも活躍</h2>
+
+        <p>現在販売しているオリジナルキーホルダーも、Canvaを使ってデザインしています。</p>
+
+        <p>表面には<strong>自分のアイコン</strong>、裏面にはそのアイコンを使った<strong>QRコード</strong>を入れています。</p>
+
+        <!-- キーホルダー写真 -->
+        <figure class="article-photo">
+          <img src="images/keychain-photo1.jpg" alt="Canvaでデザインしたオリジナルキーホルダー">
+          <figcaption>左がアイコンデザイン、真ん中がアイコン仕様のQRコードキーホルダー、右がPロゴデザイン。すべてCanvaで制作しました</figcaption>
+        </figure>
+
+        <p>写真の真ん中にあるのが、アイコンを使って作成したQRコードです。</p>
+
+        <div class="highlight-box">
+          <p class="box-title">✨ アイコン入りQRコードのメリット</p>
+          <ul>
+            <li>通常のQRコードより見た目が親しみやすくなる</li>
+            <li>デザイン性が高まり、商品として映える</li>
+            <li>アイコンとしてもQRコードとしても使える</li>
+            <li>実用性とデザイン性を両立できる</li>
+          </ul>
+        </div>
+
+        <p>通常のQRコードよりも、アイコン付きのQRコードにすることで<strong>見た目が親しみやすく</strong>なり、デザイン性も高まります。さらに、アイコンとしてもQRコードとしても使えるため、<strong>実用性も兼ね備えている</strong>と感じています。</p>
+
+        <h2>YouTube動画制作にも使っていた</h2>
+
+        <p>Canvaはキーホルダーのデザインだけではありません。以前は<strong>YouTube用の楽曲を作る際の動画制作</strong>にも活用していました。</p>
+
+        <p>同じ有料版を使うなら、できるだけ複数の用途でしっかり使いこなすことが大切だと感じています。月々の出費を<strong>無駄にしない</strong>という考え方も、副業には欠かせません。</p>
+
+        <h2>Canvaは副業の「サポートツール」</h2>
+
+        <p>Canvaは、ただのデザインツールではなく、<strong>副業を広げるための大切なサポートツール</strong>の一つになっています。</p>
+
+        <div class="highlight-box">
+          <p class="box-title">🎨 私がCanvaを使っている場面</p>
+          <ul>
+            <li>自分のアイコン・キャラクター制作</li>
+            <li>キーホルダーの表面・裏面デザイン</li>
+            <li>QRコードのデザインカスタマイズ</li>
+            <li>YouTube動画のサムネイル・画面制作</li>
+            <li>SNS投稿用の画像作成</li>
+          </ul>
+        </div>
+
+        <p>これからも工夫しながら活用の幅を広げ、副業の力にしていきたいと思っています。</p>
+
+        <p>デザインが苦手な方でも、Canvaは直感的に操作できるのでぜひ試してみてください。まずは<strong>無料版から始めて</strong>、便利さを実感してから有料版を検討するのがおすすめです。</p>
+
+      </div>
+
+      <!-- タグ -->
+      <div class="article-tags">
+        <span class="article-tag">#Canva</span>
+        <span class="article-tag">#デザイン</span>
+        <span class="article-tag">#副業入門</span>
+        <span class="article-tag">#キーホルダー</span>
+        <span class="article-tag">#QRコード</span>
+        <span class="article-tag">#ツール活用</span>
+      </div>
+
+      <a href="index.html" class="back-btn">← 記事一覧に戻る</a>
+
+    </article>
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <h4>👤 プロフィール</h4>
+      <div class="sidebar-avatar">
+        <img src="rallyho-icon.png" alt="らりほー">
+      </div>
+      <div class="profile-name">らりほー</div>
+      <p class="profile-bio">58歳・滋賀在住のトラックドライバー。定年を前に副業に挑戦。Suno AI・せどり・ハンドメイドでコツコツ実験中。</p>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>📰 最新記事</h4>
+      <div class="latest-list">
+
+        <a href="canva-guide.html">
+          <div class="latest-item">
+            <div class="latest-thumb">🎨</div>
+            <div class="latest-info">
+              <span class="latest-cat">副業入門ガイド</span>
+              <div class="latest-title">副業を広げるCanva活用術</div>
+              <div class="latest-date">2026年5月10日</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="handmade-nfc-keychain.html">
+          <div class="latest-item">
+            <div class="latest-thumb">🔑</div>
+            <div class="latest-info">
+              <span class="latest-cat">ハンドメイド</span>
+              <div class="latest-title">NFCタグ付きオリジナルキーホルダー</div>
+              <div class="latest-date">2026年5月10日</div>
+            </div>
+          </div>
+        </a>
+
+        <a href="china-sedori-start.html">
+          <div class="latest-item">
+            <div class="latest-thumb">📦</div>
+            <div class="latest-info">
+              <span class="latest-cat">せどり実践記</span>
+              <div class="latest-title">中国せどり実践記 — まずは1万円からスタートします</div>
+              <div class="latest-date">2026年5月10日</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>📂 カテゴリ一覧</h4>
+      <ul class="cat-list">
+        <li><a href="china-sedori-start.html">📦 せどり実践記 <span class="count">1</span></a></li>
+        <li><a href="handmade-nfc-keychain.html">🔑 ハンドメイド販売 <span class="count">1</span></a></li>
+        <li><a href="suno-youtube-report.html">🤖 AI副業活用 <span class="count">1</span></a></li>
+        <li><a href="canva-guide.html">💡 副業入門ガイド <span class="count">1</span></a></li>
+      </ul>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">らりほーの副業<span>実験室</span></div>
+  <p>© 2026 らりほーの副業実験室</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

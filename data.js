@@ -56,6 +56,13 @@ const ARTICLES = [
   // ↓ ここから下にコピーして追加してください ↓
 
   {
+    emoji: '🎨',
+    category: '副業入門ガイド',
+    title: '副業を広げるCanva活用術 — デザイン初心者が有料版まで使い続ける理由',
+    date: '2026年5月10日',
+    url: 'canva-guide.html',
+  },
+  {
     emoji: '📦',
     category: 'せどり実践記',
     title: '中国せどり実践記 — まずは1万円からスタートします',
