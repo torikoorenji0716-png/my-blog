@@ -65,9 +65,9 @@ const ARTICLES = [
   {
     emoji: '🔑',
     category: 'ハンドメイド',
-    title: 'NFCキーホルダーをフリマで初出品！売れるまでの話',
-    date: '2026年5月8日',
-    url: '#',
+    title: 'NFCタグ付きオリジナルキーホルダー — オフ会をきっかけに販売を始めた話',
+    date: '2026年5月10日',
+    url: 'handmade-nfc-keychain.html',
   },
   {
     emoji: '🎵',
