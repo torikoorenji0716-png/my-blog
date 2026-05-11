@@ -56,6 +56,13 @@ const ARTICLES = [
   // ↓ ここから下にコピーして追加してください ↓
 
   {
+    emoji: '📦',
+    category: 'せどり実践記',
+    title: 'せどり実践記 第2弾 — 商品が届いた！単価設定の難しさを実感',
+    date: '2026年5月11日',
+    url: 'sedori-vol2-arrival.html',
+  },
+  {
     emoji: '🎨',
     category: '副業入門ガイド',
     title: '副業を広げるCanva活用術 — デザイン初心者が有料版まで使い続ける理由',
