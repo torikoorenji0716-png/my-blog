@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://torikoorenji0716-png.github.io/my-blog/sitemap.xml
