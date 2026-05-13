@@ -58,6 +58,13 @@ const ARTICLES = [
   {
     emoji: '📦',
     category: 'せどり実践記',
+    title: 'せどり実践記 第3弾 — 商品到着！ワクワクと現実のはざまで',
+    date: '2026年5月13日',
+    url: 'sedori-vol3-goods-arrived.html',
+  },
+  {
+    emoji: '📦',
+    category: 'せどり実践記',
     title: 'せどり実践記 第2弾 — 商品が届いた！単価設定の難しさを実感',
     date: '2026年5月11日',
     url: 'sedori-vol2-arrival.html',
