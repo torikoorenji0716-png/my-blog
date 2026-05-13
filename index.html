@@ -647,9 +647,19 @@
 
   function renderArticles(filterCategory) {
     grid.innerHTML = '';
-    const list = filterCategory
-      ? ARTICLES.filter(a => a.category === filterCategory)
-      : ARTICLES.slice(0, 5);
+    let list;
+    if (filterCategory) {
+      // カテゴリ選択時：そのカテゴリの全記事を表示
+      list = ARTICLES.filter(a => a.category === filterCategory);
+    } else {
+      // デフォルト：各カテゴリから最新1記事ずつ表示
+      const seen = {};
+      list = ARTICLES.filter(a => {
+        if (seen[a.category]) return false;
+        seen[a.category] = true;
+        return true;
+      });
+    }
     list.forEach(article => {
       const card = document.createElement('div');
       card.className = 'article-card';
