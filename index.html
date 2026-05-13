@@ -569,12 +569,7 @@
 
     <div class="sidebar-card">
       <h4>📂 カテゴリ一覧</h4>
-      <ul class="cat-list">
-        <li><a href="china-sedori-start.html">📦 せどり実践記 <span class="count">2</span></a></li>
-        <li><a href="handmade-nfc-keychain.html">🔑 ハンドメイド販売 <span class="count">1</span></a></li>
-        <li><a href="suno-youtube-report.html">🤖 AI副業活用 <span class="count">1</span></a></li>
-        <li><a href="canva-guide.html">💡 副業入門ガイド <span class="count">1</span></a></li>
-      </ul>
+      <ul class="cat-list" id="category-list"></ul>
     </div>
 
     <div class="sidebar-card">
@@ -635,24 +630,67 @@
   document.getElementById('sidebar-name').textContent = PROFILE.name;
   document.getElementById('sidebar-bio').textContent = PROFILE.short;
 
-  // ── 記事一覧描画 ──
+  // ── 記事一覧描画（カテゴリフィルタ対応） ──
   const grid = document.getElementById('articles-grid');
-  ARTICLES.forEach(article => {
-    const card = document.createElement('div');
-    card.className = 'article-card';
-    card.innerHTML = `
-      <div class="article-thumb">${article.emoji}</div>
-      <div class="article-meta">
-        <span class="article-category">${article.category}</span>
-        <h3>${article.title}</h3>
-        <div class="article-date">${article.date}</div>
-      </div>
-    `;
-    if (article.url && article.url !== '#') {
-      card.addEventListener('click', () => { window.location.href = article.url; });
-    }
-    grid.appendChild(card);
+
+  function renderArticles(filterCategory) {
+    grid.innerHTML = '';
+    const list = filterCategory
+      ? ARTICLES.filter(a => a.category === filterCategory)
+      : ARTICLES.slice(0, 5);
+    list.forEach(article => {
+      const card = document.createElement('div');
+      card.className = 'article-card';
+      card.innerHTML = `
+        <div class="article-thumb">${article.emoji}</div>
+        <div class="article-meta">
+          <span class="article-category">${article.category}</span>
+          <h3>${article.title}</h3>
+          <div class="article-date">${article.date}</div>
+        </div>
+      `;
+      if (article.url && article.url !== '#') {
+        card.addEventListener('click', () => { window.location.href = article.url; });
+      }
+      grid.appendChild(card);
+    });
+  }
+
+  // ── カテゴリ一覧を動的生成 ──
+  const catMap = {};
+  const catEmoji = { 'せどり実践記': '📦', 'ハンドメイド販売': '🔑', 'AI活用': '🎵', '副業入門ガイド': '💡', 'ハンドメイド': '🔑' };
+  ARTICLES.forEach(a => { catMap[a.category] = (catMap[a.category] || 0) + 1; });
+  const catList = document.getElementById('category-list');
+
+  // 「全て」ボタン
+  const allLi = document.createElement('li');
+  allLi.innerHTML = `<a href="#articles" id="cat-all" style="font-weight:bold">📋 すべての記事 <span class="count">${ARTICLES.length}</span></a>`;
+  allLi.querySelector('a').addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('#category-list a').forEach(el => el.style.fontWeight = '');
+    e.currentTarget.style.fontWeight = 'bold';
+    document.querySelector('.section-title').textContent = '📝 最新記事';
+    renderArticles(null);
+    document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
   });
+  catList.appendChild(allLi);
+
+  Object.entries(catMap).forEach(([cat, count]) => {
+    const emoji = catEmoji[cat] || '📄';
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#articles">${emoji} ${cat} <span class="count">${count}</span></a>`;
+    li.querySelector('a').addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('#category-list a').forEach(el => el.style.fontWeight = '');
+      e.currentTarget.style.fontWeight = 'bold';
+      document.querySelector('.section-title').textContent = `📂 ${cat}`;
+      renderArticles(cat);
+      document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+    });
+    catList.appendChild(li);
+  });
+
+  renderArticles(null);
 </script>
 
 </body>
