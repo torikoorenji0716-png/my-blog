@@ -539,22 +539,22 @@
     <!-- CATEGORIES -->
     <h2 class="section-title">📂 カテゴリ</h2>
     <div class="category-grid">
-      <div class="category-card" onclick="location.href='china-sedori-start.html'">
+      <div class="category-card" onclick="filterByCategory('せどり実践記')">
         <div class="icon">📦</div>
         <h3>せどり実践記</h3>
         <p>仕入れ・販売・利益をリアルに公開</p>
       </div>
-      <div class="category-card" onclick="location.href='handmade-nfc-keychain.html'">
+      <div class="category-card" onclick="filterByCategory('ハンドメイド')">
         <div class="icon">🔑</div>
         <h3>ハンドメイド販売</h3>
         <p>NFCキーホルダーなどフリマ販売記録</p>
       </div>
-      <div class="category-card" onclick="location.href='suno-youtube-report.html'">
+      <div class="category-card" onclick="filterByCategory('AI活用')">
         <div class="icon">🤖</div>
         <h3>AI副業活用</h3>
         <p>SunoやClaudeなどAIツールの使い方</p>
       </div>
-      <div class="category-card" onclick="location.href='canva-guide.html'">
+      <div class="category-card" onclick="filterByCategory('副業入門ガイド')">
         <div class="icon">💡</div>
         <h3>副業入門ガイド</h3>
         <p>せどり・フリマ初心者向け基礎知識</p>
@@ -649,8 +649,8 @@
     grid.innerHTML = '';
     let list;
     if (filterCategory) {
-      // カテゴリ選択時：そのカテゴリの全記事を表示
-      list = ARTICLES.filter(a => a.category === filterCategory);
+      // カテゴリ選択時：そのカテゴリの全記事を古い順（第1弾→第2弾…）で表示
+      list = ARTICLES.filter(a => a.category === filterCategory).reverse();
     } else {
       // デフォルト：各カテゴリから最新1記事ずつ表示
       const seen = {};
@@ -711,6 +711,15 @@
     });
     catList.appendChild(li);
   });
+
+  function filterByCategory(cat) {
+    document.querySelectorAll('#category-list a').forEach(el => el.style.fontWeight = '');
+    const sideLink = [...document.querySelectorAll('#category-list a')].find(el => el.textContent.includes(cat));
+    if (sideLink) sideLink.style.fontWeight = 'bold';
+    document.getElementById('articles').textContent = `📂 ${cat}`;
+    renderArticles(cat);
+    document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
+  }
 
   renderArticles(null);
 </script>
