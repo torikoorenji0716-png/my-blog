@@ -1,0 +1,28 @@
+# 個人学習ノート（GitHubに公開しない）
+sedori-knowhow-note.html
+
+# 個人用アプリ・データ（ブログには公開しない）
+せどり収支管理.html
+せどり収支管理を起動.command
+sedori_data_*.json
+家事わけわけ.html
+通話タイマー.html
+フリーマーケット.html
+Suno曲作成マネージャー.html
+suno_server.py
+サーバー起動.command
+サーバー起動.app/
+動作確認.py
+claude-cowork-guide.html
+chirashi-generator/
+Suno曲/
+css/
+js/
+image-*.png
+image-*.jpg
+*.zip
+
+# システムファイル
+.DS_Store
+.suno_browser/
+.claude/

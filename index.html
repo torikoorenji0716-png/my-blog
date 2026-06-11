@@ -680,7 +680,7 @@
 
   // ── カテゴリ一覧を動的生成 ──
   const catMap = {};
-  const catEmoji = { 'せどり実践記': '📦', 'ハンドメイド販売': '🔑', 'AI活用': '🎵', '副業入門ガイド': '💡', 'ハンドメイド': '🔑' };
+  const catEmoji = { 'せどり実践記': '📦', 'ハンドメイド販売': '🔑', 'AI活用': '🤖', '副業入門ガイド': '💡', 'ハンドメイド': '🔑' };
   ARTICLES.forEach(a => { catMap[a.category] = (catMap[a.category] || 0) + 1; });
   const catList = document.getElementById('category-list');
 
@@ -691,7 +691,7 @@
     e.preventDefault();
     document.querySelectorAll('#category-list a').forEach(el => el.style.fontWeight = '');
     e.currentTarget.style.fontWeight = 'bold';
-    document.querySelector('.section-title').textContent = '📝 最新記事';
+    document.getElementById('articles').textContent = '📝 最新記事';
     renderArticles(null);
     document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
   });
@@ -705,7 +705,7 @@
       e.preventDefault();
       document.querySelectorAll('#category-list a').forEach(el => el.style.fontWeight = '');
       e.currentTarget.style.fontWeight = 'bold';
-      document.querySelector('.section-title').textContent = `📂 ${cat}`;
+      document.getElementById('articles').textContent = `📂 ${cat}`;
       renderArticles(cat);
       document.getElementById('articles').scrollIntoView({ behavior: 'smooth' });
     });
