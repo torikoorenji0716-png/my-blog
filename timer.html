@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="通話タイマー">
+<title>通話タイマー</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+:root {
+  --bg: #0a0a12;
+  --card: #15151f;
+  --border: #2a2a3a;
+  --accent: #007aff;
+  --warn: #ff9500;
+  --danger: #ff3b30;
+  --text: #f0f0f0;
+  --muted: #666;
+}
+
+body {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 40px;
+  padding-top: max(20px, env(safe-area-inset-top));
+}
+
+/* ── ヘッダー ── */
+.header {
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  padding: 24px 0 20px;
+}
+.header h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.5px; }
+.header p  { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
+
+/* ── 設定画面 ── */
+#setupScreen {
+  width: 100%; max-width: 360px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 11px; font-weight: 600;
+  color: var(--muted); letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+
+/* クイック選択 */
+.presets {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.preset {
+  background: #1e1e2e;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.preset:active { transform: scale(0.95); }
+.preset.selected { border-color: var(--accent); background: rgba(0,122,255,0.15); }
+.preset .t { font-size: 20px; font-weight: 700; color: #fff; }
+.preset .s { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.preset.selected .t { color: var(--accent); }
+
+/* 分・秒ピッカー */
+.time-picker {
+  display: flex; align-items: center;
+  justify-content: center; gap: 12px;
+}
+.picker-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.picker-label { font-size: 12px; color: var(--muted); }
+.picker-controls { display: flex; align-items: center; gap: 10px; }
+.picker-val {
+  font-size: 44px; font-weight: 200;
+  font-variant-numeric: tabular-nums;
+  min-width: 64px; text-align: center;
+  color: #fff;
+}
+.picker-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: #1e1e2e; border: 1px solid var(--border);
+  color: #ccc; font-size: 22px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.1s;
+}
+.picker-btn:active { background: var(--accent); color: #fff; transform: scale(0.9); }
+.colon { font-size: 44px; font-weight: 200; color: var(--muted); margin: 0 2px; padding-bottom: 20px; }
+
+/* 注意表示 */
+.caution {
+  background: rgba(255,59,48,0.1);
+  border: 1px solid rgba(255,59,48,0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #ff8080;
+  line-height: 1.6;
+  display: none;
+}
+.caution.show { display: block; }
+
+/* スタートボタン */
+.btn-start {
+  width: 100%; max-width: 360px;
+  padding: 20px;
+  border-radius: 18px; border: none;
+  font-size: 18px; font-weight: 700;
+  cursor: pointer;
+  background: var(--accent); color: #fff;
+  letter-spacing: 0.3px;
+  transition: all 0.15s;
+}
+.btn-start:active { transform: scale(0.97); opacity: 0.85; }
+
+.flow-note {
+  width: 100%; max-width: 360px;
+  background: rgba(0,122,255,0.08);
+  border: 1px solid rgba(0,122,255,0.2);
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 13px; line-height: 2;
+  color: #8ab4ff;
+}
+.flow-note b { color: #fff; }
+.step { display: flex; gap: 10px; align-items: flex-start; }
+.step-num {
+  min-width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+
+/* ── タイマー画面 ── */
+#timerScreen {
+  width: 100%; max-width: 360px;
+  display: none; flex-direction: column;
+  align-items: center; gap: 0;
+}
+
+.timer-status {
+  font-size: 13px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.big-timer {
+  font-size: 108px; font-weight: 100;
+  letter-spacing: -6px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1; margin-bottom: 10px;
+  transition: color 0.3s;
+}
+.big-timer.warn { color: var(--warn); }
+.big-timer.danger { color: var(--danger); animation: blink 0.5s infinite; }
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.phase-msg {
+  font-size: 22px; font-weight: 700;
+  min-height: 34px; text-align: center;
+  margin-bottom: 40px; transition: color 0.3s;
+}
+.phase-msg.warn   { color: var(--warn); }
+.phase-msg.danger { color: var(--danger); font-size: 26px; }
+
+/* バックグラウンド注意 */
+.bg-note {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 13px; color: #8ab4ff;
+  line-height: 1.8; text-align: center;
+  margin-bottom: 24px; width: 100%;
+}
+
+.btn-stop {
+  width: 100%;
+  padding: 18px;
+  border-radius: 18px; border: 1.5px solid var(--danger);
+  font-size: 17px; font-weight: 600;
+  cursor: pointer;
+  background: transparent; color: var(--danger);
+  transition: all 0.15s;
+}
+.btn-stop:active { background: rgba(255,59,48,0.15); transform: scale(0.97); }
+
+/* ── アラートバナー ── */
+#alertBanner {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--danger);
+  color: #fff; font-size: 18px; font-weight: 800;
+  text-align: center;
+  padding: max(28px, env(safe-area-inset-top)) 20px 20px;
+  transform: translateY(-100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 100;
+}
+#alertBanner.show { transform: translateY(0); }
+
+/* フラッシュ */
+#flash {
+  position: fixed; inset: 0;
+  background: var(--danger);
+  opacity: 0; pointer-events: none; z-index: 50;
+}
+</style>
+</head>
+<body>
+
+<div id="alertBanner">📵 電話を切ってください！</div>
+<div id="flash"></div>
+
+<div class="header">
+  <h1>通話タイマー</h1>
+  <p>先にタイマーをセットしてから<br>電話してください</p>
+</div>
+
+<!-- 設定画面 -->
+<div id="setupScreen">
+
+  <!-- クイック選択 -->
+  <div class="card">
+    <div class="card-title">よく使う設定（10分以内に切れる時間）</div>
+    <div class="presets">
+      <div class="preset" onclick="quickSet(8,0,this)">
+        <div class="t">8:00</div>
+        <div class="s">余裕あり</div>
+      </div>
+      <div class="preset" onclick="quickSet(9,0,this)">
+        <div class="t">9:00</div>
+        <div class="s">標準</div>
+      </div>
+      <div class="preset selected" onclick="quickSet(9,30,this)">
+        <div class="t">9:30</div>
+        <div class="s">おすすめ</div>
+      </div>
+      <div class="preset" onclick="quickSet(9,40,this)">
+        <div class="t">9:40</div>
+        <div class="s">ギリギリ</div>
+      </div>
+      <div class="preset" onclick="quickSet(9,50,this)">
+        <div class="t">9:50</div>
+        <div class="s">かなりギリ</div>
+      </div>
+      <div class="preset" onclick="quickSet(5,0,this)">
+        <div class="t">5:00</div>
+        <div class="s">短め</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分・秒ピッカー -->
+  <div class="card">
+    <div class="card-title">細かく設定する</div>
+    <div class="time-picker">
+      <div class="picker-col">
+        <div class="picker-controls">
+          <button class="picker-btn" onclick="changeMin(-1)">−</button>
+          <div class="picker-val" id="dispMin">09</div>
+          <button class="picker-btn" onclick="changeMin(1)">＋</button>
+        </div>
+        <div class="picker-label">分</div>
+      </div>
+      <div class="colon">:</div>
+      <div class="picker-col">
+        <div class="picker-controls">
+          <button class="picker-btn" onclick="changeSec(-10)">−</button>
+          <div class="picker-val" id="dispSec">30</div>
+          <button class="picker-btn" onclick="changeSec(10)">＋</button>
+        </div>
+        <div class="picker-label">秒（10秒刻み）</div>
+      </div>
+    </div>
+    <div class="caution" id="caution">
+      ⚠️ 10分以上は料金が発生します！<br>9分台以下にすることをおすすめします。
+    </div>
+  </div>
+
+  <!-- 使い方 -->
+  <div class="flow-note">
+    <div class="step"><div class="step-num">1</div><div><b>タイマーをセット</b>して「開始」を押す</div></div>
+    <div class="step"><div class="step-num">2</div><div>すぐに<b>電話アプリで発信する</b></div></div>
+    <div class="step"><div class="step-num">3</div><div>アラームが鳴ったら<b>手動で電話を切る</b></div></div>
+  </div>
+
+  <button class="btn-start" onclick="startTimer()">
+    ▶ タイマー開始（→ すぐ電話してください）
+  </button>
+
+</div>
+
+<!-- タイマー画面 -->
+<div id="timerScreen">
+  <div class="timer-status" id="timerStatus">カウントダウン中</div>
+  <div class="big-timer" id="bigTimer">9:30</div>
+  <div class="phase-msg" id="phaseMsg">電話中...</div>
+
+  <div class="bg-note">
+    電話アプリに切り替えてOK<br>
+    バックグラウンドでタイマーが動いています<br>
+    <span style="color:#666;font-size:12px;">※アラームは画面を開いたときに鳴ります</span>
+  </div>
+
+  <button class="btn-stop" onclick="stopTimer()">■ タイマーをキャンセル</button>
+</div>
+
+<script>
+// ── 状態 ──────────────────────────────────────────
+let setMin = 9, setSec = 30;
+let totalMs = 0;
+let startedAt = null;
+let intervalId = null;
+let phase = 'idle';  // idle | running | done
+let audioCtx = null;
+let warnFired = false;
+
+// ── Audio ─────────────────────────────────────────
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function beep(freq, dur, vol, count, gap) {
+  if (!audioCtx) return;
+  for (let i = 0; i < count; i++) {
+    const t = audioCtx.currentTime + i * (dur + gap);
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.type = 'sine'; osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(vol, t + 0.02);
+    gain.gain.linearRampToValueAtTime(0, t + dur);
+    osc.start(t); osc.stop(t + dur + 0.05);
+  }
+}
+
+function alarm() {
+  if (!audioCtx) return;
+  for (let i = 0; i < 6; i++) {
+    const f = i % 2 === 0 ? 880 : 660;
+    const t = audioCtx.currentTime + i * 0.45;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.type = 'square'; osc.frequency.value = f;
+    gain.gain.setValueAtTime(0.7, t);
+    gain.gain.linearRampToValueAtTime(0, t + 0.4);
+    osc.start(t); osc.stop(t + 0.45);
+  }
+}
+
+// ── ピッカー ──────────────────────────────────────
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function updatePickerDisplay() {
+  document.getElementById('dispMin').textContent = pad(setMin);
+  document.getElementById('dispSec').textContent = pad(setSec);
+  const total = setMin * 60 + setSec;
+  document.getElementById('caution').className = 'caution' + (total >= 600 ? ' show' : '');
+  // プリセット選択解除
+  if (!_presetSetting) {
+    document.querySelectorAll('.preset').forEach(p => p.classList.remove('selected'));
+  }
+}
+
+let _presetSetting = false;
+function quickSet(m, s, el) {
+  _presetSetting = true;
+  setMin = m; setSec = s;
+  document.querySelectorAll('.preset').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+  updatePickerDisplay();
+  _presetSetting = false;
+}
+
+function changeMin(d) {
+  setMin = Math.max(0, Math.min(59, setMin + d));
+  updatePickerDisplay();
+}
+function changeSec(d) {
+  setSec = setSec + d;
+  if (setSec < 0)  { setSec = 50; setMin = Math.max(0, setMin - 1); }
+  if (setSec >= 60){ setSec = 0;  setMin = Math.min(59, setMin + 1); }
+  updatePickerDisplay();
+}
+
+// ── タイマー本体 ──────────────────────────────────
+function fmt(ms) {
+  const total = Math.max(0, Math.ceil(ms / 1000));
+  const m = Math.floor(total / 60);
+  const s = total % 60;
+  return `${m}:${pad(s)}`;
+}
+
+function startTimer() {
+  initAudio();
+
+  // 通知許可を取得（iOS 16.4+ PWA）
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+
+  totalMs = (setMin * 60 + setSec) * 1000;
+  startedAt = Date.now();
+  warnFired = false;
+  phase = 'running';
+
+  document.getElementById('setupScreen').style.display = 'none';
+  document.getElementById('timerScreen').style.display = 'flex';
+  document.getElementById('bigTimer').className = 'big-timer';
+  document.getElementById('phaseMsg').className = 'phase-msg';
+  document.getElementById('phaseMsg').textContent = '電話中...';
+  document.getElementById('timerStatus').textContent = 'カウントダウン中';
+
+  // Wake Lock（画面スリープ防止）
+  if ('wakeLock' in navigator) {
+    navigator.wakeLock.request('screen').catch(() => {});
+  }
+
+  intervalId = setInterval(tick, 250);  // 250msごとにチェック
+}
+
+function tick() {
+  if (phase !== 'running') return;
+
+  const elapsed = Date.now() - startedAt;
+  const remaining = totalMs - elapsed;
+
+  // 表示更新
+  document.getElementById('bigTimer').textContent = fmt(remaining);
+
+  const remSec = Math.ceil(remaining / 1000);
+
+  // 10秒前の警告
+  if (remSec <= 10 && !warnFired) {
+    warnFired = true;
+    initAudio();
+    beep(1100, 0.15, 0.6, 3, 0.12);  // ピピピ
+    document.getElementById('bigTimer').className = 'big-timer warn';
+    document.getElementById('phaseMsg').textContent = '⚠️ あと10秒！電話を切る準備を！';
+    document.getElementById('phaseMsg').className = 'phase-msg warn';
+  }
+
+  // 5秒以下のカウント音
+  if (remSec <= 5 && remSec > 0 && warnFired) {
+    // 1秒ごとにだけ鳴らす（重複しないよう）
+    if (Math.ceil(remaining / 1000) !== Math.ceil((remaining + 250) / 1000)) {
+      initAudio();
+      beep(1300, 0.08, 0.4, 1, 0);
+    }
+  }
+
+  // 時間切れ
+  if (remaining <= 0) {
+    timeUp();
+  }
+}
+
+function timeUp() {
+  clearInterval(intervalId);
+  phase = 'done';
+
+  initAudio();
+  alarm();
+  flashScreen();
+
+  document.getElementById('bigTimer').textContent = '0:00';
+  document.getElementById('bigTimer').className = 'big-timer danger';
+  document.getElementById('phaseMsg').textContent = '📵 今すぐ電話を切る！';
+  document.getElementById('phaseMsg').className = 'phase-msg danger';
+  document.getElementById('timerStatus').textContent = '時間切れ';
+  document.getElementById('alertBanner').classList.add('show');
+
+  // Web通知（PWAホーム画面追加時に効果あり）
+  if ('Notification' in window && Notification.permission === 'granted') {
+    new Notification('📵 電話を切ってください！', {
+      body: '設定時間になりました。今すぐ通話を終了してください。',
+      requireInteraction: true,
+    });
+  }
+}
+
+function flashScreen() {
+  const el = document.getElementById('flash');
+  let n = 0;
+  const t = setInterval(() => {
+    el.style.opacity = n % 2 === 0 ? '0.6' : '0';
+    n++;
+    if (n >= 12) { clearInterval(t); el.style.opacity = '0'; }
+  }, 180);
+}
+
+function stopTimer() {
+  clearInterval(intervalId);
+  phase = 'idle';
+
+  document.getElementById('alertBanner').classList.remove('show');
+  document.getElementById('flash').style.opacity = '0';
+  document.getElementById('timerScreen').style.display = 'none';
+  document.getElementById('setupScreen').style.display = 'flex';
+}
+
+// ── バックグラウンド復帰の処理 ────────────────────
+// 電話アプリから戻ったとき、経過時間を再計算して即反映
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && phase === 'running') {
+    // 既に時間切れなら即アラーム
+    const elapsed = Date.now() - startedAt;
+    if (elapsed >= totalMs) {
+      timeUp();
+    }
+  }
+  // 画面が見えているとき音声コンテキストを再開
+  if (document.visibilityState === 'visible' && audioCtx) {
+    audioCtx.resume();
+  }
+});
+
+// ── 初期表示 ──────────────────────────────────────
+updatePickerDisplay();
+</script>
+</body>
+</html>
