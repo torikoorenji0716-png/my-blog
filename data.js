@@ -56,6 +56,13 @@ const ARTICLES = [
   // ↓ ここから下にコピーして追加してください ↓
 
   {
+    emoji: '🎵',
+    category: 'AI活用',
+    title: '和楽器ヒーリングBGM — 琴・尺八・三味線の聴きどころ案内',
+    date: '2026年6月13日',
+    url: 'wagakki-bgm.html',
+  },
+  {
     emoji: '📦',
     category: 'せどり実践記',
     title: 'せどり実践記 第3弾 — 商品到着！ワクワクと現実のはざまで',
