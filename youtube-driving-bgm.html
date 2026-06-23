@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="rallyho-icon.png">
+  <link rel="apple-touch-icon" href="rallyho-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="らりほーの副業実験室">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高速道路の走行動画×音楽で1時間動画に挑戦 — YouTubeを諦めない新しい試み | らりほーの副業実験室</title>
+  <meta name="description" content="トラックドライバーだからこそ撮れる高速道路の走行映像。30分×2本をつなげて音楽をのせ、作業用・ドライブ気分の1時間動画を作るテストに挑戦します。">
+  <link rel="canonical" href="https://torikoorenji0716-png.github.io/my-blog/youtube-driving-bgm.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="らりほーの副業実験室">
+  <meta property="og:title" content="高速道路の走行動画×音楽で1時間動画に挑戦 — YouTubeを諦めない新しい試み | らりほーの副業実験室">
+  <meta property="og:description" content="トラックドライバーだからこそ撮れる高速道路の走行映像。30分×2本をつなげて音楽をのせ、作業用・ドライブ気分の1時間動画を作るテストに挑戦します。">
+  <meta property="og:url" content="https://torikoorenji0716-png.github.io/my-blog/youtube-driving-bgm.html">
+  <meta property="og:image" content="https://torikoorenji0716-png.github.io/my-blog/rallyho-icon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="高速道路の走行動画×音楽で1時間動画に挑戦 — YouTubeを諦めない新しい試み">
+  <meta name="twitter:description" content="トラックドライバーだからこそ撮れる高速道路の走行映像。30分×2本をつなげて音楽をのせ、1時間動画を作るテストに挑戦します。">
+  <meta name="twitter:image" content="https://torikoorenji0716-png.github.io/my-blog/rallyho-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #7F77DD;
+      --purple-light: #ededfb;
+      --bg: #F5F5F0;
+      --white: #ffffff;
+      --text: #2d2d2d;
+      --text-muted: #666;
+      --border: #e2e2e2;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(127,119,221,0.1);
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--white);
+      border-bottom: 3px solid var(--purple);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo { font-size: 1.2rem; font-weight: 900; white-space: nowrap; }
+    .logo span { color: var(--purple); }
+
+    nav { display: flex; gap: 4px; }
+
+    nav a {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    nav a:hover { background: var(--purple-light); color: var(--purple); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+    }
+
+    /* ===== ARTICLE LAYOUT ===== */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 20px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ===== ARTICLE ===== */
+    article {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .article-header { margin-bottom: 32px; }
+
+    .article-category {
+      display: inline-block;
+      background: var(--purple-light);
+      color: var(--purple);
+      padding: 3px 12px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .article-title {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .article-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .article-divider {
+      border: none;
+      border-top: 2px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* ===== ARTICLE BODY ===== */
+    .article-body { font-size: 0.95rem; line-height: 2; }
+
+    .article-body p { margin-bottom: 1.6em; color: var(--text); }
+
+    .article-body .highlight {
+      background: var(--purple-light);
+      border-left: 4px solid var(--purple);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 28px 0;
+      font-weight: 500;
+      color: var(--purple);
+    }
+
+    .article-body .plan-box {
+      background: #fafaff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin: 28px 0;
+    }
+
+    .article-body .plan-box h3 {
+      font-size: 0.95rem;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+
+    .article-body .plan-box ul { list-style: none; }
+
+    .article-body .plan-box li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.9rem;
+    }
+
+    .article-body .plan-box li:last-child { border-bottom: none; }
+
+    .article-body .cta-box {
+      background: linear-gradient(135deg, var(--purple) 0%, #a89de8 100%);
+      color: var(--white);
+      padding: 28px;
+      border-radius: var(--radius);
+      text-align: center;
+      margin: 36px 0 0;
+    }
+
+    .article-body .cta-box p {
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--purple);
+      padding: 12px 28px;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+    .sidebar-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .sidebar-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--purple);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--purple-light);
+    }
+
+    .sidebar-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--purple-light);
+      margin-bottom: 12px;
+    }
+
+    .sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .profile-name { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .profile-bio { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+    .cat-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .cat-list li a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border);
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .cat-list li a:hover { color: var(--purple); }
+
+    .cat-list .count {
+      background: var(--purple-light);
+      color: var(--purple);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #2d2d2d;
+      color: #aaa;
+      text-align: center;
+      padding: 32px 20px;
+      font-size: 0.82rem;
+      margin-top: 40px;
+    }
+
+    .footer-logo { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .footer-logo span { color: var(--purple); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 12px 20px 20px;
+        border-bottom: 2px solid var(--border);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+
+      nav.open { display: flex; }
+      nav a { padding: 10px 14px; border-radius: 8px; }
+
+      .page-wrap { grid-template-columns: 1fr; padding: 24px 16px; gap: 24px; }
+      article { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">らりほーの副業<span>実験室</span></a>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav">
+      <a href="index.html">ホーム</a>
+      <a href="china-sedori-start.html">せどり</a>
+      <a href="handmade-nfc-keychain.html">ハンドメイド</a>
+      <a href="suno-youtube-report.html">AI副業</a>
+      <a href="index.html#profile">プロフィール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- トップバー -->
+<div style="background:#7F77DD;padding:0;">
+  <div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:44px;">
+    <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,0.9);font-size:0.85rem;font-weight:700;">← トップに戻る</a>
+    <span style="font-size:0.78rem;color:rgba(255,255,255,0.7);">🎵 AI活用</span>
+  </div>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-wrap">
+
+  <div>
+    <article>
+      <div class="article-header">
+        <span class="article-category">🎵 AI活用</span>
+        <h1 class="article-title">高速道路の走行動画×音楽で1時間動画に挑戦 — YouTubeを諦めない新しい試み</h1>
+        <div class="article-date">🗓 2026年6月23日　by らりほー</div>
+      </div>
+
+      <hr class="article-divider">
+
+      <div class="article-body">
+
+        <p>正直に言うと、YouTubeはなかなか結果が出ていません。それでも、どうしても諦めきれない自分がいます。今回は、これまでとはちょっと違う角度から、新しい動画に挑戦してみることにしました。</p>
+
+        <div class="highlight">「自分にしか撮れないものは、何だろう？」</div>
+
+        <p>そう考えたとき、ふと思いついたのが「高速道路の景色」でした。私はトラックドライバーなので、毎日のように高速道路を走っています。流れていく景色は、私にとっては見慣れたものですが、運転をしない人にとっては案外新鮮で、ドライブ気分や作業用の背景として楽しんでもらえるかもしれません。</p>
+
+        <p>手元には、先日撮った30分ほどの走行動画と、今日撮った30分ほどの走行動画があります。この2本をつなげて音楽をのせれば、ちょうど1時間ほどの動画になります。作業用BGMや、ドライブ気分を味わいたい人に向けた「ながら見」動画として成立するのではないか——そう考えました。</p>
+
+        <div class="plan-box">
+          <h3>🧪 今回の実験プラン</h3>
+          <ul>
+            <li>① 先日撮影した走行動画（約30分）</li>
+            <li>② 今日撮影した走行動画（約30分）</li>
+            <li>③ ①＋② をつなげて約1時間の長尺に</li>
+            <li>④ そこに音楽をのせて、作業用・ドライブ用BGM動画に仕上げる</li>
+          </ul>
+        </div>
+
+        <div class="highlight">まずは“完璧”より“試してみる”。</div>
+
+        <p>いきなり立派なものを作ろうとすると、結局手が止まってしまいます。だから今回は、あくまで「テスト」のつもりで気軽に進めます。実際に1本作って公開してみて、反応を見ながら、長さや音楽の付け方、編集のしかたを少しずつ調整していくつもりです。</p>
+
+        <p>うまくいくかどうかは、正直まだわかりません。それでも、頭の中で考えているだけでは何も始まりません。とにかく1本上げてみる。その小さな積み重ねが、いつか形になると信じています。</p>
+
+        <p>この実験室では、こうした小さな挑戦の過程を、結果が出る前からそのまま記録していきます。同じように「何かを始めたいけど、なかなか一歩が踏み出せない」という方の、ちょっとした後押しになれたら嬉しいです。</p>
+
+        <div class="cta-box">
+          <p>実際に配信しているYouTubeチャンネルはこちらです。<br>今回の高速道路BGM動画も、ここに上げていく予定です。</p>
+          <a href="https://www.youtube.com/@%E3%82%89%E3%82%8A%E3%81%BB%E3%83%BC-z7g6p" target="_blank" class="cta-btn">▶ YouTubeチャンネルを見る</a>
+        </div>
+
+      </div>
+
+      <div style="margin-top:32px; padding-top:24px; border-top:2px solid var(--purple-light);">
+        <a href="index.html" style="display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:#fff;padding:10px 24px;border-radius:24px;font-size:0.88rem;font-weight:700;transition:background 0.2s;" onmouseover="this.style.background='#6560c0'" onmouseout="this.style.background='var(--purple)'">← 記事一覧に戻る</a>
+      </div>
+
+    </article>
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <h4>👤 プロフィール</h4>
+      <div class="sidebar-avatar">
+        <img src="rallyho-icon.png" alt="らりほー">
+      </div>
+      <div class="profile-name">らりほー</div>
+      <p class="profile-bio">58歳・滋賀在住のトラックドライバー。定年を前に副業に挑戦。Suno AI・せどり・ハンドメイドでコツコツ実験中。</p>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>📂 カテゴリ一覧</h4>
+      <ul class="cat-list">
+        <li><a href="china-sedori-start.html">📦 せどり実践記 <span class="count">1</span></a></li>
+        <li><a href="handmade-nfc-keychain.html">🔑 ハンドメイド販売 <span class="count">1</span></a></li>
+        <li><a href="suno-youtube-report.html">🤖 AI副業活用 <span class="count">1</span></a></li>
+        <li><a href="canva-guide.html">💡 副業入門ガイド <span class="count">1</span></a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">らりほーの副業<span>実験室</span></div>
+  <p>© 2026 らりほーの副業実験室</p>
+</footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>

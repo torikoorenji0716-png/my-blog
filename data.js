@@ -56,6 +56,13 @@ const ARTICLES = [
   // ↓ ここから下にコピーして追加してください ↓
 
   {
+    emoji: '🎬',
+    category: 'AI活用',
+    title: '高速道路の走行動画×音楽で1時間動画に挑戦 — YouTubeを諦めない新しい試み',
+    date: '2026年6月23日',
+    url: 'youtube-driving-bgm.html',
+  },
+  {
     emoji: '🎵',
     category: 'AI活用',
     title: '和楽器ヒーリングBGM — 琴・尺八・三味線の聴きどころ案内',
